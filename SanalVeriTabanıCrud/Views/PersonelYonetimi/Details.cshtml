@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+}
+
+@model Personel
+
+<div class="jumbotron mt-5">
+  <h2 class="text-danger">@Model.Adi @Model.Soyadi</h2>
+  <h5 class="text-primary">(@Model.SicilNo)</h5>
+  <hr />
+  <img src="/Resimler/@Model.Resim" style="width:250px" />
+</div>
+<a asp-action="Index" class="btn btn-secondary">Geri</a>

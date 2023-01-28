@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model IEnumerable<Personel>
+<div class="jumbotron mt-5">
+    <h2 class=" text-danger">Personel Listesi</h2>
+    <a asp-action="Create" class="btn btn-outline-primary my-3">Yeni Personel OLuştur</a>
+
+    <table class="table table-hover">
+        <thead>
+            <th>Sicil No</th>
+            <th>Adı</th>
+            <th>Soyadı</th>
+            <th>İşlemler</th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.SicilNo</td>
+                    <td>@item.Adi</td>
+                    <td>@item.Soyadi</td>
+                    <td>
+                        <a class="btn btn-outline-secondary" asp-action="Details" asp-route-id="@item.SicilNo">Detay</a>
+                        <a class="btn btn-outline-secondary mr-2" asp-action="Edit" asp-route-id="@item.SicilNo">Düzenle</a>
+                        @*<a class="btn btn-danger ml-3" asp-action="Delete" asp-route-id="@item.SicilNo">Sil</a>*@
+
+                        @*bu divi modal için açtık diye üstteki sil butonunu kapattık bu ivi kaldırıp üstetki sil butanumu açarsak direk sormadan siler basınca sil butonuna*@
+
+                        <!-- Button trigger modal modalı tetikleyecelen sil butonu bu -->
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal@(item.SicilNo)">
+                            Sil
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal@(item.SicilNo)" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Personel siliniyor!</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="/Resimler/@item.Resim" style="width:50px;"> <span class="text-danger">@item.Adi @item.Soyadi </span>
+                                        <hr style="width:80%;">
+                                        Bu personeli kalıcı olarak silmek istediğinizden emin misiniz?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.SicilNo">Sil</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                     
+                </tr>
+                
+            }
+        </tbody>
+            
+
+    </table>
+
+</div>
+
+

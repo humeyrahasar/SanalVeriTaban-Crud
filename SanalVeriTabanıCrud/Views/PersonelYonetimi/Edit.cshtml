@@ -1,0 +1,37 @@
+﻿@model Personel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="jumbotron mt-5">
+    <h2 class="text-primary">Personel Bilgileri Düzenle</h2>
+    <hr />
+    <div class="row">
+        <div class="col-4">
+            <form asp-action="Edit">
+
+                <div class="form-group">
+                    <label for="sicilnumarası">Sicil Numarası</label>
+                    <input asp-for="SicilNo" readonly type="number" class="form-control" id="sicilnumarası" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">Benzersiz bir sicil numarası girilmelidir.</small>
+                </div>
+                <div class="form-group">
+                    <label for="adı">Adı</label>
+                    <input asp-for="Adi"  type="text" class="form-control" id="adı">
+                </div>
+                <div class="form-group">
+                    <label for="soyadı">Soyadı</label>
+                    <input asp-for="Soyadi" type="text" class="form-control" id="soyadı">
+                </div>
+                <div class="form-group">
+                    <label for="resmi">Resim</label>
+                    <input asp-for="Resim" type="text" class="form-control" id="resmi" aria-describedby="emailHelp" placeholder="ahmet.jpg">
+                    <small id="emailHelp" class="form-text text-muted">Resmin yolu girilmelidir.</small>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </form>
+        </div>
+    </div>
+</div>
+
